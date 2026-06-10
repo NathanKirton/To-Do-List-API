@@ -1,0 +1,2 @@
+wwwroot\index.html
+C:\Users\Nathan\Documents\API\GameAPI\GameAPI\wwwroot\index.html

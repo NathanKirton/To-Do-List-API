@@ -34,3 +34,5 @@ C:\Users\Nathan\Documents\API\GameAPI\GameAPI\obj\Debug\net10.0\GameAPI.pdb
 C:\Users\Nathan\Documents\API\GameAPI\GameAPI\obj\Debug\net10.0\GameAPI.genruntimeconfig.cache
 C:\Users\Nathan\Documents\API\GameAPI\GameAPI\obj\Debug\net10.0\ref\GameAPI.dll
 C:\Users\Nathan\Documents\API\GameAPI\GameAPI\bin\Debug\net10.0\Scalar.AspNetCore.dll
+C:\Users\Nathan\Documents\API\GameAPI\GameAPI\bin\Debug\net10.0\GameAPI.staticwebassets.runtime.json
+C:\Users\Nathan\Documents\API\GameAPI\GameAPI\obj\Debug\net10.0\compressed\hx0yrt6kvw-{0}-0pnif41w23-0pnif41w23.gz

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo App</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        table {
+            width: 400px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        button {
+            padding: 6px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ToDo App</h1>
+
+    <input id="taskInput" type="text" placeholder="Enter task title" />
+    <button onclick="createTask()">Create Task</button>
+
+    <table id="taskTable">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Complete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+    const apiUrl = "/api/todo";
+
+    async function loadTasks() {
+        const response = await fetch(apiUrl);
+        const tasks = await response.json();
+
+        const tbody = document.querySelector("#taskTable tbody");
+        tbody.innerHTML = "";
+
+        tasks.forEach(task => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${task.title}</td>
+                <td>
+                    <button onclick="completeTask(${task.id})">
+                        Complete
+                    </button>
+                </td>
+            `;
+
+            tbody.appendChild(row);
+        });
+    }
+
+    async function createTask() {
+        const title = document.getElementById("taskInput").value;
+
+        await fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ title: title, isComplete: false })
+        });
+
+        document.getElementById("taskInput").value = "";
+        loadTasks();
+    }
+
+    async function completeTask(id) {
+        await fetch(`${apiUrl}/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ title: "Completed", isComplete: true })
+        });
+
+        loadTasks();
+    }
+
+    loadTasks();
+    </script>
+
+</body>
+</html>

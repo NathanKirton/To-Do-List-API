@@ -1,17 +1,15 @@
 using GameAPI.Services;
 using Scalar.AspNetCore;
 
+// Set environment BEFORE building
+Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development");
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
 builder.Services.AddSingleton<IToDoService, ToDoService>();
-
 
 var app = builder.Build();
 
@@ -22,10 +20,9 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
+app.UseStaticFiles();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
