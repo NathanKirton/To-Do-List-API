@@ -1,0 +1,6 @@
+@GameAPI_HostAddress = http://localhost:5185
+
+GET {{GameAPI_HostAddress}}/api/todo
+Accept: application/json
+
+###
